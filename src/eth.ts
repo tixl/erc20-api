@@ -50,13 +50,15 @@ export async function generateTokenApi(token: TokenConfig): Promise<TokenApi> {
       address: token.contract,
       topics: [transferTopic],
     });
-    return txs.map((tx: any) => ({
-      hash: tx.transactionHash,
-      amount: addressToLower(hexToDec(tx.data)),
-      sender: addressToLower(hexToAddress(tx.topics[1])),
-      receiver: addressToLower(hexToAddress(tx.topics[2])),
-      block: Number(tx.blockNumber.toString()),
-    }));
+    return txs.map((tx: any) => {
+      return {
+        hash: tx.transactionHash,
+        amount: hexToDec(tx.data),
+        sender: addressToLower(hexToAddress(tx.topics[1])),
+        receiver: addressToLower(hexToAddress(tx.topics[2])),
+        block: Number(tx.blockNumber.toString()),
+      };
+    });
   };
 
   return {

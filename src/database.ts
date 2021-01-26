@@ -62,3 +62,12 @@ export async function getTransactionsFromForSymbol(
     order: [["block", "DESC"]],
   });
 }
+
+export async function getTransactionByHashForSymbol(
+  symbol: string,
+  hash: string
+) {
+  return Transaction.findOne({
+    where: { symbol, hash },
+  });
+}

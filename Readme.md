@@ -15,5 +15,5 @@ interval: Number, amount of blocks that will be queried together. Bugg interval 
 
 ## API
 
-`/:symbol/to/:address` get all transactions of symbol by receiver
+`/:symbol/to/:address` get all transactions of symbol by receiver  
 `/:symbol/from/:address` get all transactions of symbol by sender
