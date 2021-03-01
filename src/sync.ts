@@ -34,7 +34,7 @@ export async function startIntervalSync(token: TokenConfig, api: TokenApi) {
     const newHeight = await getCurrentBlockNumber();
     await getAndSaveBlocks(api, currentHeight, newHeight);
     currentHeight = newHeight;
-  }, 120 * 1000);
+  }, 10 * 1000);
 }
 
 async function getAndSaveBlocks(api: TokenApi, from: number, to: number) {
