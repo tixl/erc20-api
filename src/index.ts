@@ -1,7 +1,18 @@
 import { initialSync, startIntervalSync } from "./sync";
 import { generateTokenApi, TokenApi } from "./eth";
+import { configureLogger, logger } from "./log";
 require("./api");
 const config = require("../config.json");
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'local_with_logger') {
+  configureLogger(
+    process.env.APEX_URL,
+    process.env.APEX_AUTH,
+    process.env.APEX_PROJECT,
+    process.env.NET,
+    process.env.SERVICE,
+  );
+}
 
 export interface TokenConfig {
   symbol: string;
@@ -20,7 +31,7 @@ export interface TokenConfig {
   );
   for (const token of config.tokens) {
     const api = apis.get(token.symbol)!;
-    console.log(`Do initial sync for ${token.symbol}`);
+    logger.info(`Do initial sync for ${token.symbol}`);
     await initialSync(token, api);
   }
 

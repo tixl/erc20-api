@@ -6,6 +6,7 @@ import {
   getTransactionByHashForSymbol,
 } from "./database";
 import { addressToLower } from "./helper";
+import { logger } from './log';
 
 const app = express();
 app.use(express.json());
@@ -69,5 +70,5 @@ app.get("/:symbol/hash/:hash", async (req, res) => {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Service is listening on port ${port}`);
+  logger.info(`Service is listening on port ${port}`);
 });
