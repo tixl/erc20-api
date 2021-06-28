@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "db": "ts-node ./src/initdb.ts",
-    "build": "tsc"
+    "build": "tsc && cp ./src/abi.json ./lib/"
   },
   "devDependencies": {
     "@types/bn.js": "^4.11.6",
