@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "db": "ts-node ./src/initdb.ts",
-    "build": "tsc"
+    "build": "rimraf ./lib && tsc && copyfiles --up 1 ./src/abi.json ./lib/"
   },
   "devDependencies": {
     "@types/bn.js": "^4.11.6",
@@ -16,6 +16,8 @@
     "@types/sequelize": "^4.28.9",
     "@types/sqlite3": "^3.1.6",
     "@types/winston": "^2.4.4",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
